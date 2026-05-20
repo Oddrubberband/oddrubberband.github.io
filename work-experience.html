@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Experience | Alexander P. Willingham</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        
+        nav {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav li {
+            margin: 0 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            font-size: 1.05rem;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+        
+        .page-header {
+            background: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .job-card {
+            background: white;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 5px solid #3498db;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .job-title {
+            flex: 1;
+        }
+        
+        .job-title h2 {
+            color: #2c3e50;
+            font-size: 1.6rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .company {
+            color: #3498db;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .job-meta {
+            text-align: right;
+            color: #666;
+        }
+        
+        .location {
+            font-style: italic;
+        }
+        
+        .date {
+            color: #999;
+            margin-top: 0.2rem;
+        }
+        
+        .responsibilities {
+            margin-top: 1rem;
+        }
+        
+        .responsibilities ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .responsibilities li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+        }
+        
+        .responsibilities li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .job-header {
+                flex-direction: column;
+            }
+            
+            .job-meta {
+                text-align: left;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work-experience.html">Work Experience</a></li>
+            <li><a href="engineering.html">Engineering Projects</a></li>
+            <li><a href="personal-projects.html">Art & Personal Projects</a></li>
+        </ul>
+    </nav>
+    
+    <div class="page-header">
+        <h1>Work Experience</h1>
+        <p>Professional roles in project management, business operations, and customer service</p>
+    </div>
+    
+    <div class="container">
+        <div class="job-card">
+            <div class="job-header">
+                <div class="job-title">
+                    <h2>Project Management Intern</h2>
+                    <p class="company">Shawmut Design and Construction</p>
+                </div>
+                <div class="job-meta">
+                    <p class="location">Las Vegas, NV</p>
+                    <p class="date">June 2023 - August 2023 & June 2024 - August 2024</p>
+                    <p class="date">40 hours/week</p>
+                </div>
+            </div>
+            <div class="responsibilities">
+                <ul>
+                    <li>Designed and implemented badging access system for 400-person construction site</li>
+                    <li>Processed Change Orders and contract modifications</li>
+                    <li>Oversaw site progression using OpenSpace AI and site safety for 20 floors – 215 rooms</li>
+                    <li>Coordinated information and logistics between 14 different subcontractors</li>
+                    <li>Applied technical drawings to real-world construction scenarios</li>
+                    <li>Utilized internal systems for financial tracking, contract modifications, and project health monitoring</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="job-card">
+            <div class="job-header">
+                <div class="job-title">
+                    <h2>Owner</h2>
+                    <p class="company">Oddrubberband Studios LLC</p>
+                </div>
+                <div class="job-meta">
+                    <p class="location">College Station, TX</p>
+                    <p class="date">September 2023 - Current</p>
+                    <p class="date">5-10 hours/week</p>
+                </div>
+            </div>
+            <div class="responsibilities">
+                <ul>
+                    <li>Founded and managed a digital coaching business with a focus on Esports and Technical Consulting</li>
+                    <li>Worked directly with clients to define needs, recognize problems in real time, and delivered customized services</li>
+                    <li>Designed and implemented a custom grading program for a high school teacher</li>
+                    <li>Managed all aspects of business operations including client relations, service delivery, and financial management</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="job-card">
+            <div class="job-header">
+                <div class="job-title">
+                    <h2>FOH Worker</h2>
+                    <p class="company">Chick-Fil-A</p>
+                </div>
+                <div class="job-meta">
+                    <p class="location">College Station, TX</p>
+                    <p class="date">January 2024 - April 2024</p>
+                    <p class="date">15 hours/week</p>
+                </div>
+            </div>
+            <div class="responsibilities">
+                <ul>
+                    <li>Balanced part-time employment while maintaining Electrical Engineering coursework and operating a small business</li>
+                    <li>Provided exceptional customer service in a fast-paced environment</li>
+                    <li>Operated POS systems efficiently and managed drive-through operations with speed and accuracy</li>
+                    <li>Demonstrated strong time management and multitasking abilities</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="job-card">
+            <div class="job-header">
+                <div class="job-title">
+                    <h2>Leadership Experience</h2>
+                    <p class="company">Various Organizations</p>
+                </div>
+                <div class="job-meta">
+                    <p class="location">Las Vegas, NV</p>
+                    <p class="date">2019 - 2022</p>
+                </div>
+            </div>
+            <div class="responsibilities">
+                <h3 style="color: #2c3e50; margin-bottom: 0.5rem;">Varsity Captain - Club Lacrosse</h3>
+                <ul>
+                    <li>Coronado HS Club Lacrosse & Vegas Reapers Club Lacrosse (2020-2022)</li>
+                    <li>8 years as lacrosse player through Middle School, High School, and Club levels</li>
+                    <li>Developed time management skills playing for two separate varsity teams simultaneously</li>
+                </ul>
+                
+                <h3 style="color: #2c3e50; margin: 1rem 0 0.5rem;">Section Leader - Marching Band</h3>
+                <ul>
+                    <li>Coronado High School Marching Band (2019-2021)</li>
+                    <li>Oversaw music preparation, memorization, and progress for section</li>
+                    <li>Aided in setup and transportation of large equipment including stage props and drums</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Alexander P. Willingham | Electrical Engineering Portfolio</p>
+    </footer>
+</body>
+</html>
