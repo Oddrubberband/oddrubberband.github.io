@@ -13,13 +13,13 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            line-height: 1.8;
             color: #333;
             background-color: #f4f4f4;
         }
         
         nav {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            background: linear-gradient(135deg, #2c3e50 0%, #5a5a5a 100%);
             color: white;
             padding: 1rem 0;
             position: sticky;
@@ -46,13 +46,12 @@
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: opacity 0.3s;
+            transition: color 0.3s;
             font-size: 1.05rem;
         }
         
         nav a:hover {
-            opacity: 0.8;
-            text-decoration: underline;
+            color: #F7E5C1;
         }
         
         .page-header {
@@ -74,145 +73,355 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 2rem auto;
             padding: 0 20px;
+            margin-bottom: 3rem;
         }
         
-        .section-title {
+        /* Project Hero Card */
+        .project-hero {
             background: white;
-            padding: 1.5rem 2rem;
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
-        .section-title h2 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 0.5rem;
+        .hero-image-section {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, #C9A961 0%, #8B7355 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
         
-        .project-card {
-            background: white;
-            margin-bottom: 2rem;
+        .hero-image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
             padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border-left: 5px solid #3498db;
-            transition: transform 0.3s, box-shadow 0.3s;
+            color: white;
         }
         
-        .project-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .project-card h3 {
-            color: #2c3e50;
-            font-size: 1.5rem;
+        .hero-overlay h2 {
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
         }
         
-        .project-type {
-            display: inline-block;
-            background: #3498db;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
+        .hero-overlay .project-meta {
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
         
-        .project-description {
+        .hero-content {
+            padding: 2.5rem;
+        }
+        
+        .project-intro {
+            font-size: 1.15rem;
+            line-height: 1.9;
             color: #555;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
         
-        .project-technologies {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-        
-        .tech-tag {
-            background: #ecf0f1;
-            color: #2c3e50;
-            padding: 0.4rem 0.8rem;
+        .expand-button {
+            background: #C9A961;
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
             border-radius: 5px;
-            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            font-weight: 600;
         }
         
-        .coursework-grid {
+        .expand-button:hover {
+            background: #B8954A;
+            transform: translateY(-2px);
+        }
+        
+        /* Expandable Project Details */
+        .project-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-out;
+        }
+        
+        .project-details.active {
+            max-height: 20000px;
+            transition: max-height 2s ease-in;
+        }
+        
+        .project-details-inner {
+            padding: 0 2.5rem 2.5rem;
+        }
+        
+        /* Narrative Section */
+        .narrative-section {
+            margin-bottom: 3rem;
+        }
+        
+        .narrative-section h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 3px solid #C9A961;
+            padding-bottom: 0.5rem;
+        }
+        
+        .narrative-section p {
+            color: #555;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 1.2rem;
+        }
+        
+        /* Image Grid */
+        .image-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
+            margin: 2rem 0;
         }
         
-        .coursework-card {
-            background: white;
-            padding: 1.5rem;
+        .image-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
-        .coursework-card h3 {
+        .image-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+        
+        .image-grid.large img {
+            height: 350px;
+        }
+        
+        /* Full Width Image */
+        .full-width-image {
+            width: 100%;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        
+        /* Team Photo Section */
+        .team-photo-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .team-photo-section h4 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .team-photo-section img {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin: 0 auto;
+        }
+        
+        .team-caption {
+            margin-top: 1rem;
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* Subsystem Cards */
+        .subsystem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .subsystem-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 5px solid #C9A961;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .subsystem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        
+        .subsystem-header {
+            background: linear-gradient(135deg, #F7E5C1 0%, #C9A961 100%);
+            padding: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .subsystem-header h4 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .subsystem-header .lead {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .subsystem-content {
+            padding: 1.5rem;
+        }
+        
+        .subsystem-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: #F7E5C1;
+            padding: 1.8rem;
+            border-radius: 8px;
+            border-left: 4px solid #C9A961;
+            margin: 2rem 0;
+        }
+        
+        .highlight-box h4 {
             color: #2c3e50;
             margin-bottom: 1rem;
             font-size: 1.3rem;
         }
         
-        .coursework-card ul {
-            list-style: none;
-            padding-left: 0;
+        .highlight-box p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.05rem;
         }
         
-        .coursework-card li {
-            padding: 0.4rem 0;
-            padding-left: 1.2rem;
-            position: relative;
-            color: #555;
+        /* Technical Specs Box */
+        .tech-specs {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
         }
         
-        .coursework-card li:before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: #3498db;
-            font-weight: bold;
+        .tech-specs h4 {
+            color: #F7E5C1;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
         }
         
-        .memberships {
-            background: #f8f9fa;
-            padding: 1.5rem;
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .spec-item {
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
             border-radius: 5px;
-            margin-top: 1.5rem;
         }
         
-        .memberships h4 {
-            color: #2c3e50;
-            margin-bottom: 0.8rem;
+        .spec-label {
+            color: #F7E5C1;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
         }
         
-        .memberships ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        .memberships li {
-            padding: 0.3rem 0;
-            padding-left: 1.2rem;
-            position: relative;
-            color: #666;
-        }
-        
-        .memberships li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #3498db;
+        .spec-value {
+            font-size: 1.3rem;
             font-weight: bold;
+        }
+        
+        /* Quote Box */
+        .quote-box {
+            background: white;
+            border-left: 4px solid #8B7355;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Nested Expandable */
+        .nested-expandable {
+            background: #fafafa;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .nested-header {
+            padding: 1.2rem 1.5rem;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        
+        .nested-header:hover {
+            background: #f8f9fa;
+        }
+        
+        .nested-header h5 {
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+        
+        .nested-icon {
+            color: #C9A961;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .nested-expandable.active .nested-icon {
+            transform: rotate(180deg);
+        }
+        
+        .nested-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        
+        .nested-content.active {
+            max-height: 5000px;
+            transition: max-height 1s ease-in;
+        }
+        
+        .nested-content-inner {
+            padding: 1.5rem;
         }
         
         footer {
@@ -224,7 +433,19 @@
         }
         
         @media (max-width: 768px) {
-            .coursework-grid {
+            .hero-image-section {
+                height: 250px;
+            }
+            
+            .hero-overlay h2 {
+                font-size: 1.8rem;
+            }
+            
+            .subsystem-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .image-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -242,128 +463,311 @@
     
     <div class="page-header">
         <h1>Engineering Projects</h1>
-        <p>Research, technical projects, and academic coursework</p>
+        <p>From concept to demonstration: real engineering work with real teams</p>
     </div>
     
     <div class="container">
-        <div class="section-title">
-            <h2>Current Research & Projects</h2>
-        </div>
         
-        <div class="project-card">
-            <span class="project-type">Research Project</span>
-            <h3>Metalizing 3D Printed Horn Antennas</h3>
-            <p class="project-description">
-                Creating and defining methodology for metalizing 3D printed horn antennas. This research explores innovative manufacturing techniques for RF/microwave components, combining additive manufacturing with metallization processes to create functional antenna structures.
-            </p>
-            <div class="project-technologies">
-                <span class="tech-tag">RF Engineering</span>
-                <span class="tech-tag">3D Printing</span>
-                <span class="tech-tag">Antenna Design</span>
-                <span class="tech-tag">Material Science</span>
-            </div>
-        </div>
-        
-        <div class="project-card">
-            <span class="project-type">Robotics Project</span>
-            <h3>S.W.R.M. Communications Subsystem</h3>
-            <p class="project-description">
-                Developing the communications subsystem for S.W.R.M. (Swarm Robotics Project), exploring swarm robotics and mesh network technologies. This project involves designing robust communication protocols for coordinated multi-robot systems.
-            </p>
-            <div class="project-technologies">
-                <span class="tech-tag">Mesh Networks</span>
-                <span class="tech-tag">Embedded Systems</span>
-                <span class="tech-tag">Wireless Communication</span>
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">C++</span>
-            </div>
-        </div>
-        
-        <div class="section-title">
-            <h2>Academic Coursework</h2>
-        </div>
-        
-        <div class="coursework-grid">
-            <div class="coursework-card">
-                <h3>Spring 2026</h3>
-                <ul>
-                    <li>RF & Microwave Engineering</li>
-                    <li>RF & Microwave Wireless</li>
-                    <li>Electric Noise</li>
-                    <li>Laser Principles & Applications</li>
-                    <li>Electrical Design</li>
-                </ul>
+        <!-- CAPSTONE PROJECT: 3D PRINTED HORN ANTENNA -->
+        <div class="project-hero">
+            <div class="hero-image-section">
+                <img src="images/capstone-hero.jpg" alt="3D Printed Horn Antenna">
+                <div class="hero-overlay">
+                    <h2>Waveguide Wizards: 3D Printed Horn Antenna</h2>
+                    <p class="project-meta">Senior Capstone Project | Sponsored by MTTS | Team of 3 Engineers</p>
+                </div>
             </div>
             
-            <div class="coursework-card">
-                <h3>Fall 2025</h3>
-                <ul>
-                    <li>Electronics</li>
-                    <li>Electric & Magnetic Fields</li>
-                    <li>Electric Properties of Materials</li>
-                    <li>Optical & Thermal Physics</li>
-                </ul>
+            <div class="hero-content">
+                <p class="project-intro">
+                    This was the project where everything came together. For our senior capstone, my team—Kyle Carlson, Dalton Luck, and I—designed and built a portable 2.4 GHz directional radio system centered around a 3D printed horn antenna. The goal was to create an affordable, accessible platform that demonstrated how antenna design, RF front-ends, and control electronics actually work together in the real world. What made this project special wasn't just the technical challenge—it was the fact that we got to see an idea go from problem statement all the way to a working demonstration, driven entirely by our own efforts and creativity [5][6].
+                </p>
+                
+                <button class="expand-button" onclick="toggleProject('capstone')">Explore The Full Project ▼</button>
+                
+                <div class="project-details" id="capstone-details">
+                    <div class="project-details-inner">
+                        
+                        <div class="narrative-section">
+                            <h3>The Problem We Solved</h3>
+                            <p>Long-range directional communications at 2.4 GHz is increasingly required for outdoor links, but existing solutions are often expensive, bulky, or tightly integrated. Students and hobbyists lack an affordable platform that clearly demonstrates how antenna design, RF front-ends, and control electronics work together. We wanted to change that [6].</p>
+                            
+                            <p>Our solution was a low-cost, commercial off-the-shelf (COTS) portable 2.4 GHz directional radio system built around a 3D printed horn antenna. This system was designed for radio hobbyists and students who want to understand the practical side of RF engineering without breaking the bank [6].</p>
+                        </div>
+                        
+                        <div class="team-photo-section">
+                            <h4>The Waveguide Wizards Team</h4>
+                            <img src="images/capstone-team-photo.jpg" alt="Capstone team at final presentation">
+                            <p class="team-caption">Team Waveguide Wizards at our final demonstration. Left to right: Kyle Carlson (Antenna), myself (Power), Dalton Luck (Radio)</p>
+                        </div>
+                        
+                        <div class="narrative-section">
+                            <h3>Why This Project Mattered to Me</h3>
+                            <p>I've worked on technical projects before—like swarm robotics and various lab assignments—but this felt different. This was the first time I wasn't just one person on a large team following someone else's roadmap. I was overseeing an entire subsystem from start to finish, making design decisions, running simulations, building hardware, and seeing my work directly contribute to something we could demo and be proud of [5].</p>
+                            
+                            <p>The capstone was sponsored by the Microwave Theory & Technology Society (MTTS) at Texas A&M, an organization I'm part of where we discuss antenna properties, RF engineering, and practical applications of microwave technology. Having that connection made the project feel even more grounded in real engineering practice [5].</p>
+                        </div>
+                        
+                        <div class="highlight-box">
+                            <h4>Three Subsystems, One Goal</h4>
+                            <p>Our project was divided into three major subsystems: the Antenna (Kyle), the Radio (Dalton), and Power (me). Each of us took full ownership over our area, which meant we had to coordinate closely while also diving deep into our individual technical challenges. It was the perfect balance of teamwork and independent problem-solving.</p>
+                        </div>
+                        
+                        <!-- SUBSYSTEM OVERVIEW CARDS -->
+                        <div class="subsystem-grid">
+                            <div class="subsystem-card">
+                                <div class="subsystem-header">
+                                    <h4>🔌 Power Subsystem</h4>
+                                    <p class="lead">Alexander P. Willingham</p>
+                                </div>
+                                <div class="subsystem-content">
+                                    <p>My responsibility: designing a portable power system that could take in high voltage from a rechargeable battery and convert it into stable, efficient power for both high-current RF components and low-power logic circuits.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="subsystem-card">
+                                <div class="subsystem-header">
+                                    <h4>📡 Antenna Subsystem</h4>
+                                    <p class="lead">Kyle Carlson</p>
+                                </div>
+                                <div class="subsystem-content">
+                                    <p>Kyle's challenge: designing and fabricating a 3D printed horn antenna that could achieve directional gain at 2.4 GHz, with proper impedance matching and real-world performance.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="subsystem-card">
+                                <div class="subsystem-header">
+                                    <h4>📻 Radio Subsystem</h4>
+                                    <p class="lead">Dalton Luck</p>
+                                </div>
+                                <div class="subsystem-content">
+                                    <p>Dalton's focus: implementing packet-based transmission and reception using an ESP32 and nRF24L01P radio module, with proper RF matching and firmware architecture.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- MY SUBSYSTEM: POWER -->
+                        <div class="narrative-section">
+                            <h3>My Work: The Power Subsystem</h3>
+                            <p>The power subsystem was my domain, and it turned out to be one of the most rewarding engineering challenges I've tackled. The core problem was this: we needed a portable system, which meant battery power. But batteries output high voltage (up to 25.2V for our 6S LiPo), and our components needed clean, stable power at much lower voltages—3.3V for the logic components and 4.4V for the RF power amplifier [6].</p>
+                            
+                            <p>The challenge wasn't just voltage conversion—it was doing it efficiently, with minimal ripple, while also protecting the battery from damage and giving the system enough runtime to be practical. We were targeting at least 12 hours of operation, which is a lot to ask from a portable device [6].</p>
+                        </div>
+                        
+                        <div class="tech-specs">
+                            <h4>Power Subsystem Specifications</h4>
+                            <div class="specs-grid">
+                                <div class="spec-item">
+                                    <div class="spec-label">Battery Type</div>
+                                    <div class="spec-value">6S1P LiPo</div>
+                                </div>
+                                <div class="spec-item">
+                                    <div class="spec-label">Battery Capacity</div>
+                                    <div class="spec-value">3300 mAh</div>
+                                </div>
+                                <div class="spec-item">
+                                    <div class="spec-label">Logic Rail</div>
+                                    <div class="spec-value">3.3V</div>
+                                </div>
+                                <div class="spec-item">
+                                    <div class="spec-label">Power Rail</div>
+                                    <div class="spec-value">4.4V</div>
+                                </div>
+                                <div class="spec-item">
+                                    <div class="spec-label">Max Runtime</div>
+                                    <div class="spec-value">82-98 hrs</div>
+                                </div>
+                                <div class="spec-item">
+                                    <div class="spec-label">Idle Runtime</div>
+                                    <div class="spec-value">~270 hrs</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- NESTED: Design Process -->
+                        <div class="nested-expandable">
+                            <div class="nested-header" onclick="toggleNested(this)">
+                                <h5>⚙️ Design Process & Component Selection</h5>
+                                <div class="nested-icon">▼</div>
+                            </div>
+                            <div class="nested-content">
+                                <div class="nested-content-inner">
+                                    <p>I started by running simulations in LTSpice using manufacturer-provided SPICE models for the buck converters. The goal was to find a configuration that minimized output ripple, maintained stable voltage under varying loads, and operated efficiently even with the large voltage difference between the battery and our target rails [6].</p>
+                                    
+                                    <p>I decided to implement two separate isolated buck converter rails. This gave me independent control over the logic and power rails, which was important because the RF power amplifier had a much higher current draw than the logic components. Isolating the rails also meant that noise and switching behavior from one converter wouldn't affect the other [5].</p>
+                                    
+                                    <p>Before the PCB arrived, I built a proof-of-concept test article using prefab components to verify that my simulations matched real-world behavior. It was a mess of wires and breadboards, but it worked—and more importantly, it gave me confidence that the design was solid before committing to a PCB [6].</p>
+                                    
+                                    <div class="image-grid">
+                                        <img src="images/power-pcb.jpg" alt="Custom power PCB">
+                                        <img src="images/power-simulation.jpg" alt="LTSpice simulation results">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- NESTED: Ripple & Performance -->
+                        <div class="nested-expandable">
+                            <div class="nested-header" onclick="toggleNested(this)">
+                                <h5>📊 Output Ripple & Performance Testing</h5>
+                                <div class="nested-icon">▼</div>
+                            </div>
+                            <div class="nested-content">
+                                <div class="nested-content-inner">
+                                    <p>One of my main concerns was output ripple—especially on the 3.3V logic rail. The ESP32 and other logic components are sensitive to voltage fluctuations, and too much ripple can cause logic errors or brownouts. My target was to keep ripple below 3% or +0.1V peak-to-peak [6].</p>
+                                    
+                                    <p>Component selection was critical here. I chose capacitors and inductors specifically to minimize ripple in simulation, and I carefully laid out the PCB to reduce switching noise. When I finally tested the physical board, I used resistor dummy loads to simulate different current draws and measured the output with an oscilloscope [6].</p>
+                                    
+                                    <p>The good news? Ripple stayed well below simulation values across the tested range. The bad news? I did see some sawtooth spikes at the buck switching frequency (150 kHz) that were more dramatic than I expected. They were still within tolerance, but if we ran into logic issues down the line, a PCB layout redesign would be the fix. Thankfully, we didn't hit that problem [6].</p>
+                                    
+                                    <div class="quote-box">
+                                        "Testing with resistor dummy loads taught me that simulation gets you 80% of the way there—but the last 20% only shows up when you build the real thing and put a scope on it."
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- NESTED: Battery Protection -->
+                        <div class="nested-expandable">
+                            <div class="nested-header" onclick="toggleNested(this)">
+                                <h5>🔋 Battery Sensing & Protection</h5>
+                                <div class="nested-icon">▼</div>
+                            </div>
+                            <div class="nested-content">
+                                <div class="nested-content-inner">
+                                    <p>LiPo batteries are great for capacity and power density, but they're also unforgiving if you discharge them too far. Our 6S battery had a safe cutoff at 21V (3.5V per cell), and permanent damage would occur below 18V (3V per cell). I needed a way to monitor battery voltage in real time and shut the system down before we hit the danger zone [6].</p>
+                                    
+                                    <p>I designed a voltage divider circuit (823kΩ total resistance to minimize current draw) that brought the battery voltage down into the ESP32's measurement range (0.1V to 3.3V). The ESP32's GPIO pins aren't the most accurate ADCs in the world, so there's some margin of error, but it was good enough for our purpose [6].</p>
+                                    
+                                    <p>I programmed a shutdown procedure into the firmware: if the sensed voltage dropped below 2.38V (which corresponds to 21V at the battery), the system would start a 2-minute countdown. If the voltage stayed low, the ESP32 would initiate a controlled shutdown to protect the battery. This gave us a 27-hour window for manual shutoff before risking battery damage—plenty of buffer [6].</p>
+                                    
+                                    <p>Under continuous transmit, we calculated the system would run for 82-98 hours before hitting the cutoff. In idle mode, it could last around 270 hours (~10 days). Those numbers far exceeded our 12-hour requirement, which felt great [6].</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="narrative-section">
+                            <h3>What I Learned From This Subsystem</h3>
+                            <p>The power subsystem taught me that real engineering is about tradeoffs. I had to balance efficiency, cost, size, runtime, ripple, thermal performance, and PCB layout, all while making sure my design would actually work when we built it. Simulation is an incredible tool, but it's not a substitute for building hardware, testing it, and iterating when things don't match your expectations.</p>
+                            
+                            <p>I also learned the value of working on a small, focused team where everyone owns a subsystem. Kyle, Dalton, and I trusted each other to handle our areas, which meant we could go deep without constantly checking in. But we also coordinated regularly to make sure our subsystems would integrate smoothly. That balance between independence and collaboration is something I'll carry into future projects [5].</p>
+                        </div>
+                        
+                        <!-- ANTENNA & RADIO SUBSYSTEMS (BRIEF) -->
+                        <div class="narrative-section">
+                            <h3>The Other Subsystems</h3>
+                            <p><strong>Kyle's Antenna Work</strong> was impressive. He designed a WR430 horn antenna in simulation, optimized it for 2.4 GHz, and then worked through the manufacturing process of 3D printing and metallizing the structure. We experimented with acetone vapor smoothing to reduce surface roughness before electroplating, and Kyle ran countless simulations to figure out the minimum metal thickness we'd need for proper conductivity and RF performance. The final antenna achieved a realized gain of 15.45 dBi with excellent return loss (-22.24 dB), which is textbook horn antenna performance [6].</p>
+                            
+                            <p><strong>Dalton's Radio Work</strong> involved implementing packet-based TX/RX using an ESP32 and nRF24L01P module. He designed RF matching networks in Cadence AWR, laid out the PCB in Altium, and wrote the firmware architecture that handled everything from SPI communication to file transfer over the radio link. His subsystem had to interface with both Kyle's antenna and my power system, which added complexity—but he pulled it off [6].</p>
+                        </div>
+                        
+                        <div class="image-grid large">
+                            <img src="images/antenna-3d-model.jpg" alt="3D model of horn antenna">
+                            <img src="images/antenna-radiation-pattern.jpg" alt="Simulated radiation pattern">
+                            <img src="images/radio-pcb.jpg" alt="Radio subsystem PCB">
+                        </div>
+                        
+                        
+                        
+                        
+                    </div>
+                </div>
             </div>
         </div>
         
-        <div class="section-title" style="margin-top: 2rem;">
-            <h2>Technical Skills & Experience</h2>
-        </div>
         
-        <div class="project-card">
-            <h3>Hardware & Circuit Design</h3>
-            <p class="project-description">
-                Hands-on experience with electronic circuit design, testing, and troubleshooting. Proficient in using laboratory equipment and simulation software for circuit analysis and design verification.
-            </p>
-            <div class="project-technologies">
-                <span class="tech-tag">Soldering</span>
-                <span class="tech-tag">Multisim</span>
-                <span class="tech-tag">Oscilloscope</span>
-                <span class="tech-tag">Waveform Generator</span>
-                <span class="tech-tag">SPICE</span>
-                <span class="tech-tag">Altium</span>
+        <!-- SWRM PROJECT -->
+        <div class="project-hero">
+            <div class="hero-image-section">
+                <img src="images/swrm-hero.jpg" alt="SWRM Swarm Robotics Project">
+                <div class="hero-overlay">
+                    <h2>SWRM: Synchronized Wireless Robotic Movement</h2>
+                    <p class="project-meta">TURTLE Robotics | Swarm Robotics Team | Electrical & Communications Subteam</p>
+                </div>
+            </div>
+            
+            <div class="hero-content">
+                <p class="project-intro">
+                    SWRM (Synchronized Wireless Robotic Movement) is a project within Texas A&M's TURTLE Robotics organization—which stands for Texas A&M University RoboTics and Leadership Experience. The goal is to explore ground-based swarm robotics in art: using mounted 64x64 LED panels, a cohesive swarm of robots performs unique motion-driven light shows. I joined TURTLE through their Hatchling Boot Camp, which taught introductory robotics and CAD to engineering students across all fields, and then moved up to the advanced SWRM project team [4][5].
+                </p>
+                
+                <button class="expand-button" onclick="toggleProject('swrm')">Dive Into SWRM ▼</button>
+                
+                <div class="project-details" id="swrm-details">
+                    <div class="project-details-inner">
+                        
+                        <div class="narrative-section">
+                            <h3>How I Got Started with TURTLE</h3>
+                            <p>I initially joined TURTLE Robotics to go through their Hatchling Boot Camp, an introductory program that teaches robotics fundamentals, CAD, and hands-on build skills to students from all engineering disciplines. My first project was a team challenge: design a robot that could autonomously pick up blocks. We worked in teams of three, and the project involved 3D printing, servo motors, Bluetooth connections with an ESP32, and a lot of trial and error [5].</p>
+                            
+                            <p>It was a great introduction to robotics outside of a classroom setting. You weren't following a lab manual—you had to figure things out, iterate when something didn't work, and coordinate with your team to meet the challenge. After completing the Boot Camp, I applied for their advanced project teams and was accepted into SWRM [5].</p>
+                        </div>
+                        
+                        <div class="image-grid">
+                            <img src="images/turtle-hatchling-robot.jpg" alt="Hatchling Boot Camp robot">
+                            <img src="images/turtle-hatchling-team.jpg" alt="Hatchling team working">
+                        </div>
+                        
+                        <div class="narrative-section">
+                            <h3>The SWRM Project</h3>
+                            <p>SWRM is all about creating a scalable system of swarm robots that can connect to form one unified shape and then separate to operate independently. Each robot has a top-mounted 64x64 LED panel, and the swarm uses a mesh network to communicate and synchronize their movements and light patterns. The end goal is to showcase exhibitions where the robots move in coordinated patterns while displaying synchronized visuals [4].</p>
+                            
+                            <p>The project is still in its early stages. When I joined, the team was working on getting the first prototype robot functional—capable of motion, external communication, and dynamic lighting. The mechanical team was designing the chassis with omni wheels and an internal frame, the software team was working on ROS simulation and mesh network communication using PainlessMesh, and the electrical team (where I was) was handling component selection, power management, and communication systems [4].</p>
+                        </div>
+                        
+                        <div class="highlight-box">
+                            <h4>Mesh Networks & Decentralized Communication</h4>
+                            <p>Instead of relying on a central router, SWRM uses a mesh network where every robot passes information to its neighbors. This decentralized setup makes the swarm more reliable and adaptable—if one robot drops out, the rest can still communicate and coordinate. It's a really elegant solution for swarm robotics [4].</p>
+                        </div>
+                        
+                        <div class="narrative-section">
+                            <h3>My Role: Electrical & Communications Subteam</h3>
+                            <p>I was on the electrical and communications subteam, which meant I worked closely with the computer science team to define how the robots would interact, interpret position data, and coordinate their movements. One of my main contributions was helping select components and working through how the robots would handle power management—each bot needed to run for extended periods without constant recharging, which put a lot of emphasis on efficient power budgets [5].</p>
+                            
+                            <p>But my favorite contribution was a Python program I wrote that would intake photos or videos and output an RGB value map for the pixels on the robotic LED displays. The program would automatically adjust and scale the image based on the number of connected robots in the swarm, allowing us to easily map and render designs and images to be displayed during performances [5].</p>
+                            
+                            <p>It was a relatively simple program from a coding perspective, but it solved a real problem: how do you take a static image or video and dynamically distribute it across a variable number of moving, coordinated robots? The answer was to treat the swarm as one large display and intelligently partition the image based on how many bots were active. It was a fun problem to solve, and seeing it work felt like magic [5].</p>
+                        </div>
+                        
+                        <div class="team-photo-section">
+                            <h4>SWRM Team Photo</h4>
+                            <img src="images/swrm-team-photo.jpg" alt="SWRM team at showcase event">
+                            <p class="team-caption">The SWRM team at a TURTLE showcase event. We're still building, but the vision is coming together.</p>
+                        </div>
+                        
+                        <div class="narrative-section">
+                            <h3>What's Next for SWRM</h3>
+                            <p>The project is ongoing, and future semesters will focus on testing system reliability, implementing a local positioning system (LPS) for real-time location tracking, validating movement and navigation, synchronizing LED light patterns between robots, and working toward a reliable physical linkage system so the bots can connect and separate smoothly [4].</p>
+                            
+                            <p>The long-term goal is to scale the swarm to many robots that can maintain a stable mesh network and to streamline the design for easier manufacturing and assembly in future iterations. It's an ambitious project, but that's what makes it exciting [4].</p>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
         </div>
         
-        <div class="project-card">
-            <h3>Programming & Software Development</h3>
-            <p class="project-description">
-                Experience in multiple programming languages and frameworks for embedded systems, machine learning, and hardware description. Skilled in developing both low-level and high-level software solutions for engineering applications.
-            </p>
-            <div class="project-technologies">
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">C++</span>
-                <span class="tech-tag">PyTorch</span>
-                <span class="tech-tag">Verilog</span>
-                <span class="tech-tag">Assembly</span>
-            </div>
-        </div>
-        
-        <div class="project-card">
-            <h3>CAD & Engineering Design</h3>
-            <p class="project-description">
-                Proficiency in computer-aided design tools for circuit board design, RF/microwave systems, and mechanical prototyping. Experience interpreting and creating technical drawings for engineering applications.
-            </p>
-            <div class="project-technologies">
-                <span class="tech-tag">CAD</span>
-                <span class="tech-tag">Altium</span>
-                <span class="tech-tag">SystemVue</span>
-                <span class="tech-tag">Technical Drawings</span>
-            </div>
-        </div>
-        
-        <div class="memberships">
-            <h4>Professional Memberships</h4>
-            <ul>
-                <li>Texas A&M Robotics and Leadership Experience</li>
-                <li>Microwave Theory & Technology Society</li>
-                <li>S.E.P.S. (Society of Electrical & Power Systems)</li>
-            </ul>
-        </div>
     </div>
     
     <footer>
         <p>&copy; 2024 Alexander P. Willingham | Electrical Engineering Portfolio</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Building systems, solving problems, learning constantly</p>
     </footer>
+    
+    <script>
+        function toggleProject(projectId) {
+            const details = document.getElementById(projectId + '-details');
+            details
+            .classList.toggle('active');
+        }
+        
+        function toggleNested(header) {
+            const expandable = header.parentElement;
+            const content = expandable.querySelector('.nested-content');
+            
+            expandable.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

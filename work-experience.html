@@ -13,13 +13,13 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            line-height: 1.8;
             color: #333;
             background-color: #f4f4f4;
         }
         
         nav {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            background: linear-gradient(135deg, #2c3e50 0%, #5a5a5a 100%);
             color: white;
             padding: 1rem 0;
             position: sticky;
@@ -46,13 +46,12 @@
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: opacity 0.3s;
+            transition: color 0.3s;
             font-size: 1.05rem;
         }
         
         nav a:hover {
-            opacity: 0.8;
-            text-decoration: underline;
+            color: #F7E5C1;
         }
         
         .page-header {
@@ -77,78 +76,243 @@
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 20px;
+            margin-bottom: 3rem;
         }
         
+        /* Job Card Styling */
         .job-card {
             background: white;
             margin-bottom: 2rem;
-            padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border-left: 5px solid #3498db;
+            overflow: hidden;
+            border-left: 5px solid #C9A961;
         }
         
         .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            gap: 2rem;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s;
         }
         
-        .job-title {
+        .job-header:hover {
+            background: #f8f9fa;
+        }
+        
+        .company-logo {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #f8f9fa;
+            padding: 10px;
+        }
+        
+        .job-title-section {
             flex: 1;
         }
         
-        .job-title h2 {
+        .job-title-section h2 {
             color: #2c3e50;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             margin-bottom: 0.3rem;
         }
         
-        .company {
-            color: #3498db;
-            font-size: 1.2rem;
-            font-weight: 500;
+        .company-name {
+            color: #C9A961;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
         
         .job-meta {
-            text-align: right;
             color: #666;
+            font-size: 1rem;
         }
         
-        .location {
+        .job-meta span {
+            margin-right: 1rem;
+        }
+        
+        .expand-icon {
+            font-size: 2rem;
+            color: #C9A961;
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .job-card.active .expand-icon {
+            transform: rotate(180deg);
+        }
+        
+        /* Brief Summary */
+        .job-summary {
+            padding: 0 2rem 2rem 2rem;
+            color: #555;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        /* Expandable Content */
+        .job-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            background: #f8f9fa;
+        }
+        
+        .job-details.active {
+            max-height: 15000px;
+            transition: max-height 1.5s ease-in;
+        }
+        
+        .job-details-content {
+            padding: 2.5rem;
+        }
+        
+        /* Narrative paragraphs */
+        .narrative-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .narrative-section h3 {
+            color: #2c3e50;
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid #C9A961;
+            padding-bottom: 0.5rem;
+        }
+        
+        .narrative-section p {
+            color: #555;
+            margin-bottom: 1.2rem;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+        
+        .narrative-section em {
+            color: #666;
             font-style: italic;
         }
         
-        .date {
-            color: #999;
-            margin-top: 0.2rem;
+        /* Nested Expandable Sections */
+        .nested-section {
+            background: white;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+            overflow: hidden;
+            border-left: 3px solid #8B7355;
         }
         
-        .responsibilities {
-            margin-top: 1rem;
+        .nested-header {
+            padding: 1.2rem 1.8rem;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
         }
         
-        .responsibilities ul {
-            list-style: none;
-            padding-left: 0;
+        .nested-header:hover {
+            background: #f8f9fa;
         }
         
-        .responsibilities li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
+        .nested-header h4 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+        }
+        
+        .nested-icon {
+            color: #8B7355;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .nested-section.active .nested-icon {
+            transform: rotate(180deg);
+        }
+        
+        .nested-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        
+        .nested-content.active {
+            max-height: 8000px;
+            transition: max-height 1s ease-in;
+        }
+        
+        .nested-content-inner {
+            padding: 2rem;
+            background: #fafafa;
+        }
+        
+        .nested-content-inner p {
             color: #555;
+            line-height: 1.9;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
         }
         
-        .responsibilities li:before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: #3498db;
-            font-weight: bold;
-            font-size: 1.2rem;
+        /* Photo Gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .photo-gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .photo-gallery img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: #F7E5C1;
+            padding: 1.8rem;
+            border-radius: 8px;
+            border-left: 4px solid #C9A961;
+            margin: 2rem 0;
+        }
+        
+        .highlight-box h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .highlight-box p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        /* Quote Box */
+        .quote-box {
+            background: white;
+            border-left: 4px solid #8B7355;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
         
         footer {
@@ -161,12 +325,20 @@
         
         @media (max-width: 768px) {
             .job-header {
-                flex-direction: column;
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .company-logo {
+                margin: 0 auto;
             }
             
             .job-meta {
-                text-align: left;
-                margin-top: 1rem;
+                text-align: center;
+            }
+            
+            .photo-gallery {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -183,109 +355,316 @@
     
     <div class="page-header">
         <h1>Work Experience</h1>
-        <p>Professional roles in project management, business operations, and customer service</p>
+        <p>The projects, people, and moments that shaped my professional growth</p>
     </div>
     
     <div class="container">
+        
+        <!-- SHAWMUT DESIGN AND CONSTRUCTION -->
         <div class="job-card">
-            <div class="job-header">
-                <div class="job-title">
+            <div class="job-header" onclick="toggleJob(this)">
+                <img src="images/shawmut-logo.png" alt="Shawmut Design and Construction Logo" class="company-logo">
+                <div class="job-title-section">
+                    <div class="company-name">Shawmut Design and Construction</div>
                     <h2>Project Management Intern</h2>
-                    <p class="company">Shawmut Design and Construction</p>
+                    <div class="job-meta">
+                        <span>📍 Las Vegas, NV</span>
+                        <span>📅 Summer 2023 & Summer 2024</span>
+                        <span>⏱️ 40 hours/week</span>
+                    </div>
                 </div>
-                <div class="job-meta">
-                    <p class="location">Las Vegas, NV</p>
-                    <p class="date">June 2023 - August 2023 & June 2024 - August 2024</p>
-                    <p class="date">40 hours/week</p>
-                </div>
+                <div class="expand-icon">▼</div>
             </div>
-            <div class="responsibilities">
-                <ul>
-                    <li>Designed and implemented badging access system for 400-person construction site</li>
-                    <li>Processed Change Orders and contract modifications</li>
-                    <li>Oversaw site progression using OpenSpace AI and site safety for 20 floors – 215 rooms</li>
-                    <li>Coordinated information and logistics between 14 different subcontractors</li>
-                    <li>Applied technical drawings to real-world construction scenarios</li>
-                    <li>Utilized internal systems for financial tracking, contract modifications, and project health monitoring</li>
-                </ul>
+            
+            <div class="job-summary">
+                I spent two summers working at Shawmut Design and Construction, a luxury design and construction general contractor, on a massive casino renovation project for Caesars Entertainment in Las Vegas. My first summer focused on project management during the preconstruction and early construction phases for 440 hotel rooms across 20 floors. The second summer, I was personally invited back by the project superintendents to work on the luxury Rainman suites (yes, from the movie), taking on a mixed role between project management and field superintendent. This wasn't a shadowing internship—I was given real responsibility managing systems for 400+ workers, coordinating between 14 subcontractors, solving field problems in real time, and helping keep a multi-million dollar project on track.
+            </div>
+            
+            <div class="job-details">
+                <div class="job-details-content">
+                    
+                    <div class="narrative-section">
+                        <h3>What This Role Really Was</h3>
+                        <p>Let me be honest—when I first started at Shawmut, I had no idea what I was walking into. I knew it was a construction project management internship, but I didn't really understand what that meant on a day-to-day basis until I was actually there. We were working on the Colosseum Tower at Caesars Palace, renovating the general hotel rooms during my first summer and then the high-end luxury suites during my second. The scale alone was intimidating: 20 floors, 440 rooms initially, with construction happening in an active casino where security, access control, and coordination with casino operations were constant concerns [2][3].</p>
+                        
+                        <p>This wasn't the kind of internship where you shadow someone and take notes. Within my first week, I was handed real responsibilities that mattered to the project's success. I learned quickly that construction project management isn't about standing back and watching a schedule unfold—it's about constantly translating between drawings, people, materials, site conditions, documentation, and decisions. Every day brought something unexpected, whether it was a subcontractor issue, a discrepancy between old blueprints and reality, or a field problem that needed an immediate solution [2].</p>
+                    </div>
+                    
+                    <div class="photo-gallery">
+                        <img src="images/shawmut-suite.jpg" alt="Completed luxury suite at Caesars Palace">
+                        <img src="images/shawmut-logo.png" alt="Shawmut Design and Construction">
+                        <img src="images/shawmut-team.jpg" alt="Internship team photo with Las Vegas Strip view">
+                    </div>
+                    
+                    <div class="narrative-section">
+                        <h3>My First Summer: Learning the Ropes</h3>
+                        <p>My first summer was heavily focused on preconstruction operations before transitioning into active construction. I spent my days working with blueprints, floorplans, and electrical wiring diagrams—labeling them, commenting on them, modifying them as conditions changed. I handled RFIs (Requests for Information), attended meetings and created summaries of design decisions to send to subcontractors, inspected and documented submittals and product samples, and helped maintain both physical and digital project files using Procore [2][3].</p>
+                        
+                        <p>What struck me most during this phase was how much construction depends on documentation and communication. You'd think the blueprints would tell you everything you need to know, but the reality is messier. We were working in a decades-old Vegas casino, and the existing conditions often didn't match what the drawings said. There were old pipes where they shouldn't be, electrical rooms in slightly different locations, structural elements that required workarounds. One of my project managers, Ryan Herron, had a saying that stuck with me: "Don't trust, verify, and don't trust the verification." It became my philosophy for the rest of the internship—always double-check, always confirm, always keep your eyes open for discrepancies [3].</p>
+                    </div>
+                    
+                    <!-- NESTED: Badging System -->
+                    <div class="nested-section">
+                        <div class="nested-header" onclick="toggleNested(this)">
+                            <h4>🎫 The Badging System: My Biggest First-Summer Contribution</h4>
+                            <div class="nested-icon">▼</div>
+                        </div>
+                        <div class="nested-content">
+                            <div class="nested-content-inner">
+                                <p>Within my first week, the project manager I was working under told me he wanted me to take full control of the badging system for subcontractor personnel. He needed it off his plate entirely. At the time, I was terrified—this was my first internship, and he was trusting me with something that affected hundreds of workers across 14 different subcontractors. But I took it on, and it ended up becoming one of my proudest contributions [2][3].</p>
+                                
+                                <p>The challenge was creating a functional access-control and personnel tracking system for an active construction site inside a high-security casino. Every worker needed proper identification, safety training verification, parking access, and the ability to move through casino security checkpoints. I designed physical badges unique to our project with Shawmut branding, unique worker ID numbers, and parking barcodes. I built a live Excel tracker that aggregated personnel data from all 14 subcontractors—names, driver's licenses, employee numbers, company affiliations, and safety training compliance. I coordinated with Caesars Entertainment security to give them updated physical and digital lists they could cross-reference to verify workers on-site [2][3].</p>
+                                
+                                <p>The system ended up covering over 300 workers and became integral to how the project functioned. It helped with site security, worker access and egress, parking coordination, subcontractor accountability, and gave the general contractor much better visibility over who was present at any given time. The team used my system for the remainder of the contract. Looking back, I'm proud not just because it worked, but because it taught me that sometimes the best solution is the one that's practical enough for people to actually use [2][3].</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- NESTED: Room Progress Tracker -->
+                    <div class="nested-section">
+                        <div class="nested-header" onclick="toggleNested(this)">
+                            <h4>📋 The Room-by-Room Tracker: Solving a Field Problem</h4>
+                            <div class="nested-icon">▼</div>
+                        </div>
+                        <div class="nested-content">
+                            <div class="nested-content-inner">
+                                <p>Once construction started inside the casino, we hit a major logistical challenge: tracking the progress of hundreds of hotel rooms. Each room had its own status, its own issues, its own sequence of required tasks, and its own readiness for the next subcontractor. There was an online system that was supposed to manage this, but it wasn't working well in the field. Some subcontractors struggled with the technology, the site Wi-Fi was slow or nonexistent due to required electrical disconnects, and some teams outright refused to use it. Information gaps were causing delays because no one could easily tell which rooms were ready for the next trade [2][3].</p>
+                                
+                                <p>Initially, the project team sent me floor by floor, room by room, with pen and paper to manually track progress and issues. After doing this for a while, I realized there had to be a better way. So I created my own printed room-progress tracker and placed one in every room. It was simple—just a physical sheet where foremen and workers could check off completed tasks, leave notes, see the room's status at a glance, and understand which trade needed to move in next. It didn't require Wi-Fi, logins, or any technical literacy. It just worked [2][3].</p>
+                                
+                                <p>What surprised me was how quickly the subcontractors adopted it. They started using the trackers to coordinate themselves, checking rooms on each floor to see where they were needed. It became a practical tool that matched the reality of the jobsite instead of forcing a theoretical system onto workers who didn't have the infrastructure to support it. By the time I left the first project, active construction had reached 10 floors and 220 rooms, all using the system [2][3].</p>
+                                
+                                <div class="quote-box">
+                                    "I learned quickly that the best solution is not always the most advanced one. Sometimes the right answer is the system people will actually use."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- NESTED: Water Leak -->
+                    <div class="nested-section">
+                        <div class="nested-header" onclick="toggleNested(this)">
+                            <h4>🚨 Emergency Response: The Water Leak</h4>
+                            <div class="nested-icon">▼</div>
+                        </div>
+                        <div class="nested-content">
+                            <div class="nested-content-inner">
+                                <p>There was one moment during my first summer that really tested how I handle pressure. A construction worker came up to me and mentioned there was a small leak near an electrical room. When I went to find it, I realized the situation was way more serious than "a small leak"—a copper water pipe had ruptured and was spraying pressurized water across the entire hallway, directly toward the floor's electrical room [2][3].</p>
+                                
+                                <p>I didn't really think, I just acted. I grabbed a 55-gallon construction trash can, shoved it under the pipe, and bent the pipe downward to direct the water into the container. Then I immediately radioed the onsite superintendents for help and started searching for the floor's water shutoff. The whole thing probably only lasted a few minutes, but it felt much longer [2][3].</p>
+                                
+                                <p>What I learned from that experience wasn't that I'm some kind of emergency response hero—it was that field awareness and quick thinking matter. I understood the risk of water near electrical infrastructure, I knew I needed to contain it immediately, and I knew I needed to escalate to the right people while still acting in the moment. It's one of those stories that reminds me that construction sites are unpredictable, and sometimes the most valuable thing you can do is stay calm and handle what's in front of you [2].</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h4>Why I Was Invited Back</h4>
+                        <p>After the first project finished successfully and ahead of schedule, Shawmut was awarded a second contract to renovate the luxury Rainman suites in the same tower. I was personally invited back for a second summer by the project superintendents based on my performance during the first internship. That meant a lot to me—it showed that the trust they'd given me early on had paid off, and that I'd proven myself capable of handling real responsibility in a complex field environment [2][3].</p>
+                    </div>
+                    
+                    <!-- NESTED: Second Summer -->
+                    <div class="nested-section">
+                        <div class="nested-header" onclick="toggleNested(this)">
+                            <h4>🏗️ Second Summer: Field Superintendent Work</h4>
+                            <div class="nested-icon">▼</div>
+                        </div>
+                        <div class="nested-content">
+                            <div class="nested-content-inner">
+                                <p>My second summer was different from the first. The work shifted toward luxury suite renovations, which meant higher-end finishes, tighter margins, and a greater emphasis on quality control and documentation. I took on a mixed role combining project management support and field superintendent responsibilities. The stakes felt higher because these weren't just standard hotel rooms—they were high-value luxury spaces where small material, finish, or documentation issues could become expensive very quickly [2][3].</p>
+                                
+                                <p>I spent a lot of time doing meticulous site inspections, documenting progress with OpenSpace AI (a 3D camera system that creates photo walkthroughs mapped to blueprints), and helping the project managers and Caesars Entertainment monitor conditions remotely. The OpenSpace work was particularly interesting from a technical perspective—it felt like I was connecting construction management with modern digital documentation tools, creating visual records that anyone could access to verify progress and site conditions [2][3].</p>
+                                
+                                <p>I also gained exposure to the financial side of construction during this summer. I worked with contract change orders, learned how internal financial tracking systems function, and started understanding how field observations connect to cost control and project decision-making. It wasn't my primary responsibility, but I could see how every decision on-site had financial implications, and that perspective changed how I approached my work [2].</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- NESTED: Tile Waste Story -->
+                    <div class="nested-section">
+                        <div class="nested-header" onclick="toggleNested(this)">
+                            <h4>💡 Catching the Tile Waste Issue</h4>
+                            <div class="nested-icon">▼</div>
+                        </div>
+                        <div class="nested-content">
+                            <div class="nested-content-inner">
+                                <p>One of my proudest moments from the second summer came from noticing something that almost everyone else had missed. The flooring subcontractor was requesting change orders for more expensive granite flooring, claiming they were working on tight margins and needed additional material. Something about it didn't sit right with me, so I started paying closer attention during my site inspections [2][3].</p>
+                                
+                                <p>I noticed that their dump carts were full of discarded tile pieces—and not small scraps, but large sections that looked like they could easily be reused for border pieces around exterior walls and trim. It seemed like a waste issue, not a supply issue. I brought the concern to both the subcontractor and my superintendent, and after reviewing it, the team was able to reduce material waste and save money on the contract [2][3].</p>
+                                
+                                <p>What I learned from this wasn't just about tile—it was about the importance of field observation and verification. It's easy to accept a change order request at face value, especially when a subcontractor says they need more material. But part of quality control and cost awareness is verifying what's actually happening in the field. Sometimes small waste patterns become large cost issues if no one's paying attention. Ryan Herron's advice echoed in my head again: "Don't trust, verify, and don't trust the verification" [3].</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="narrative-section">
+                        <h3>What I Took Away</h3>
+                        <p>These two summers at Shawmut taught me more than I could have imagined. I learned how large construction projects actually function—not from a textbook, but from being in the field, solving real problems, coordinating real teams, and seeing how drawings, people, materials, and decisions all come together. I learned that the best solutions are often the practical ones, not the most advanced ones. I learned to observe closely, communicate clearly, document thoroughly, and adapt constantly. Most importantly, I learned that I can be trusted with real responsibility, and that when I'm given ownership over something, I'll figure out how to make it work [2].</p>
+                        
+                        <p>Both projects finished on time and under budget, and I'd like to think my contributions played a part in that success—alongside, of course, the amazing team at Shawmut Design and Construction [3].</p>
+                    </div>
+                    
+                </div>
             </div>
         </div>
         
+        
+        <!-- ODDRUBBERBAND STUDIOS LLC -->
         <div class="job-card">
-            <div class="job-header">
-                <div class="job-title">
-                    <h2>Owner</h2>
-                    <p class="company">Oddrubberband Studios LLC</p>
+            <div class="job-header" onclick="toggleJob(this)">
+                <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #C9A961 0%, #8B7355 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🎮
                 </div>
-                <div class="job-meta">
-                    <p class="location">College Station, TX</p>
-                    <p class="date">September 2023 - Current</p>
-                    <p class="date">5-10 hours/week</p>
+                <div class="job-title-section">
+                    <div class="company-name">Oddrubberband Studios LLC</div>
+                    <h2>Owner & Founder</h2>
+                    <div class="job-meta">
+                        <span>📍 College Station, TX</span>
+                        <span>📅 September 2023 - Current</span>
+                        <span>⏱️ 5-10 hours/week</span>
+                    </div>
                 </div>
+                <div class="expand-icon">▼</div>
             </div>
-            <div class="responsibilities">
-                <ul>
-                    <li>Founded and managed a digital coaching business with a focus on Esports and Technical Consulting</li>
-                    <li>Worked directly with clients to define needs, recognize problems in real time, and delivered customized services</li>
-                    <li>Designed and implemented a custom grading program for a high school teacher</li>
-                    <li>Managed all aspects of business operations including client relations, service delivery, and financial management</li>
-                </ul>
+            
+            <div class="job-summary">
+                Oddrubberband Studios is my own small business venture, combining my passion for gaming with technical consulting. I founded it to offer digital coaching services focused on Esports alongside technical consulting for clients who need customized software solutions. It's been a great way to stay entrepreneurial while balancing my engineering coursework, and it's taught me a lot about client relations, service delivery, and running a business independently.
+            </div>
+            
+            <div class="job-details">
+                <div class="job-details-content">
+                    <div class="narrative-section">
+                        <h3>What Oddrubberband Studios Is</h3>
+                        <p>Oddrubberband Studios started as an idea during my first semester at Texas A&M. I've always been into gaming—particularly competitive Esports—and I'd spent years developing skills in game strategy, coaching, and technical problem-solving. At the same time, I was building up my programming and software skills through my engineering coursework. I realized there was an opportunity to combine those interests into something that could actually generate income while I was in school [1].</p>
+                        
+                        <p>The business has two main sides. On one hand, I offer digital coaching for Esports—helping players improve their gameplay, understand strategy, and develop better habits. On the other, I do technical consulting, which has included projects like designing and implementing a custom grading program for a high school teacher who needed a solution tailored to their specific workflow [1].</p>
+                    </div>
+                    
+                    <div class="narrative-section">
+                        <h3>How It Works</h3>
+                        <p>What I've learned from running Oddrubberband Studios is that the most important part of any service business is really understanding what the client needs. Whether it's an Esports client trying to improve their rank or a teacher who needs a better way to manage grades, my approach is the same: I work directly with them to define their needs, recognize problems in real time, and deliver customized solutions that actually work for them [1].</p>
+                        
+                        <p>The custom grading program is a good example. The teacher I worked with had a very specific grading workflow that wasn't well-supported by existing software. Instead of trying to force them into a one-size-fits-all solution, I sat down with them, understood exactly what they needed, and built something from scratch that streamlined their process. That kind of problem-solving is what I enjoy most—taking a technical challenge and turning it into something practical and useful.</p>
+                    </div>
+                    
+                    <div class="narrative-section">
+                        <h3>Balancing Business and School</h3>
+                        <p>Running Oddrubberband Studios while maintaining a full Electrical Engineering course load has been a constant exercise in time management and prioritization. Some weeks are busier than others, and I've had to learn when to take on new clients and when to focus on school. But I think that balance has made me better at both—I've learned to work efficiently, communicate clearly, and deliver results even when time is tight [1].</p>
+                        
+                        <p>Ultimately, Oddrubberband Studios is my way of staying entrepreneurial and building something of my own. It's taught me about client relations, financial management, service pricing, and what it takes to run a business independently. And honestly, it's been a lot of fun.</p>
+                    </div>
+                </div>
             </div>
         </div>
         
+        
+        <!-- CHICK-FIL-A -->
         <div class="job-card">
-            <div class="job-header">
-                <div class="job-title">
-                    <h2>FOH Worker</h2>
-                    <p class="company">Chick-Fil-A</p>
+            <div class="job-header" onclick="toggleJob(this)">
+                <div style="width: 120px; height: 120px; background: #E51937; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white;">
+                    🍗
                 </div>
-                <div class="job-meta">
-                    <p class="location">College Station, TX</p>
-                    <p class="date">January 2024 - April 2024</p>
-                    <p class="date">15 hours/week</p>
+                <div class="job-title-section">
+                    <div class="company-name">Chick-fil-A</div>
+                    <h2>Front of House Worker</h2>
+                    <div class="job-meta">
+                        <span>📍 College Station, TX</span>
+                        <span>📅 January 2024 - April 2024</span>
+                        <span>⏱️ 15 hours/week</span>
+                    </div>
                 </div>
+                <div class="expand-icon">▼</div>
             </div>
-            <div class="responsibilities">
-                <ul>
-                    <li>Balanced part-time employment while maintaining Electrical Engineering coursework and operating a small business</li>
-                    <li>Provided exceptional customer service in a fast-paced environment</li>
-                    <li>Operated POS systems efficiently and managed drive-through operations with speed and accuracy</li>
-                    <li>Demonstrated strong time management and multitasking abilities</li>
-                </ul>
+            
+            <div class="job-summary">
+                Working at Chick-fil-A during the spring semester of my sophomore year was all about proving to myself that I could balance part-time work with a full Electrical Engineering course load and running Oddrubberband Studios on the side. It was a test of time management and work ethic, and honestly, it taught me a lot about staying efficient under pressure.
+            </div>
+            
+            <div class="job-details">
+                <div class="job-details-content">
+                    <div class="narrative-section">
+                        <h3>Why I Took the Job</h3>
+                        <p>I'm not going to lie—taking a part-time job at Chick-fil-A while juggling engineering coursework and my own business seemed a little crazy at the time. But I wanted to challenge myself and see if I could handle the workload. I also wanted the structure and discipline that comes from having to show up and perform consistently, regardless of how busy my week was [1].</p>
+                        
+                        <p>The role itself was straightforward: I worked the front of house, which meant providing customer service, operating the POS system, managing drive-through operations, and keeping things moving during peak hours. Chick-fil-A has a reputation for being fast-paced and high-volume, and that reputation is accurate. During lunch and dinner rushes, it was all hands on deck, and you had to stay sharp, move quickly, and communicate constantly with your team [1].</p>
+                    </div>
+                    
+                    <div class="narrative-section">
+                        <h3>What I Learned</h3>
+                        <p>What I took away from this experience wasn't just customer service skills—though I definitely got better at staying calm and friendly even when things were hectic. What I really learned was how to manage my time ruthlessly. Between 15 hours a week at Chick-fil-A, a full engineering course load, and running Oddrubberband Studios, I didn't have room for inefficiency. I had to plan my weeks carefully, prioritize tasks, and make sure I was using my time effectively [1].</p>
+                        
+                        <p>I also learned that sometimes the most valuable thing you can do is just show up and do your job well, even when it's not glamorous. There's something grounding about working in a fast-paced customer service environment that keeps you humble and reminds you that every role matters, whether you're designing circuits or handing someone their food order with a smile.</p>
+                    </div>
+                </div>
             </div>
         </div>
         
+        
+        <!-- LEADERSHIP EXPERIENCE -->
         <div class="job-card">
-            <div class="job-header">
-                <div class="job-title">
-                    <h2>Leadership Experience</h2>
-                    <p class="company">Various Organizations</p>
+            <div class="job-header" onclick="toggleJob(this)">
+                <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #8B7355 0%, #6B5D4F 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🏆
                 </div>
-                <div class="job-meta">
-                    <p class="location">Las Vegas, NV</p>
-                    <p class="date">2019 - 2022</p>
+                <div class="job-title-section">
+                    <div class="company-name">High School Leadership Roles</div>
+                    <h2>Team Captain & Section Leader</h2>
+                    <div class="job-meta">
+                        <span>📍 Las Vegas, NV</span>
+                        <span>📅 2019 - 2022</span>
+                    </div>
                 </div>
+                <div class="expand-icon">▼</div>
             </div>
-            <div class="responsibilities">
-                <h3 style="color: #2c3e50; margin-bottom: 0.5rem;">Varsity Captain - Club Lacrosse</h3>
-                <ul>
-                    <li>Coronado HS Club Lacrosse & Vegas Reapers Club Lacrosse (2020-2022)</li>
-                    <li>8 years as lacrosse player through Middle School, High School, and Club levels</li>
-                    <li>Developed time management skills playing for two separate varsity teams simultaneously</li>
-                </ul>
-                
-                <h3 style="color: #2c3e50; margin: 1rem 0 0.5rem;">Section Leader - Marching Band</h3>
-                <ul>
-                    <li>Coronado High School Marching Band (2019-2021)</li>
-                    <li>Oversaw music preparation, memorization, and progress for section</li>
-                    <li>Aided in setup and transportation of large equipment including stage props and drums</li>
-                </ul>
+            
+            <div class="job-summary">
+                Before college, I held leadership positions in two very different areas: I was Varsity Captain for two club lacrosse teams simultaneously, and I was Section Leader for the Coronado High School Marching Band. Both experiences taught me about time management, team coordination, and what it means to be responsible for other people's success.
+            </div>
+            
+            <div class="job-details">
+                <div class="job-details-content">
+                    <div class="narrative-section">
+                        <h3>Lacrosse: Leading Two Teams at Once</h3>
+                        <p>I played lacrosse for eight years, starting in middle school and continuing through high school and club levels. During my junior and senior years, I served as Varsity Captain for both Coronado High School Club Lacrosse and the Vegas Reapers Club Lacrosse—two separate teams with different schedules, different players, and different team dynamics [1].</p>
+                        
+                        <p>Playing for two varsity teams at the same time was intense. It meant managing overlapping practice schedules, balancing games and tournaments, and making sure I was present and focused for both teams. More than that, it meant being a leader in two different environments simultaneously. I had to learn how to read a room, understand what my teammates needed, and step up when the team needed direction or motivation. It was exhausting, but it taught me more about time management and leadership than almost anything else I did in high school [1].</p>
+                    </div>
+                    
+                    <div class="narrative-section">
+                        <h3>Marching Band: A Different Kind of Leadership</h3>
+                        <p>Being Section Leader for the Coronado High School Marching Band from 2019 to 2021 was a completely different experience from lacrosse, but it was equally valuable. As Section Leader, I was responsible for overseeing music preparation, memorization, and progress for my entire section. I also helped with the physical side of marching band—setting up and transporting large equipment like stage props and drums, which required coordination and teamwork [1].</p>
+                        
+                        <p>What I learned from marching band was patience and the importance of helping people improve at their own pace. Not everyone learns music or marching technique the same way, and part of being a good section leader was figuring out how to communicate effectively with different people. It also taught me that leadership isn't always about being the loudest voice in the room—sometimes it's about being the person who makes sure everyone else has what they need to succeed.</p>
+                    </div>
+                </div>
             </div>
         </div>
+        
     </div>
     
     <footer>
         <p>&copy; 2024 Alexander P. Willingham | Electrical Engineering Portfolio</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">"Don't trust, verify, and don't trust the verification"</p>
     </footer>
+    
+    <script>
+        // Toggle main job details
+        function toggleJob(header) {
+            const jobCard = header.parentElement;
+            const details = jobCard.querySelector('.job-details');
+            
+            jobCard.classList.toggle('active');
+            details.classList.toggle('active');
+        }
+        
+        // Toggle nested sections
+        function toggleNested(header) {
+            const section = header.parentElement;
+            const content = section.querySelector('.nested-content');
+            
+            section.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

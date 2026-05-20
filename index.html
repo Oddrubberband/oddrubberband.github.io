@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art & Personal Projects | Alexander P. Willingham</title>
+    <title>Alexander P. Willingham | Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -18,11 +18,13 @@
             background-color: #f4f4f4;
         }
         
+        /* Navigation */
         nav {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            background: linear-gradient(135deg, #2c3e50 0%, #5a5a5a 100%);
             color: white;
             padding: 1rem 0;
-            position: sticky;
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -46,161 +48,365 @@
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: opacity 0.3s;
+            transition: color 0.3s;
             font-size: 1.05rem;
         }
         
         nav a:hover {
-            opacity: 0.8;
-            text-decoration: underline;
+            color: #F7E5C1;
         }
         
-        .page-header {
-            background: white;
-            padding: 3rem 2rem;
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #5a5a5a 100%);
+            color: white;
+            padding: 120px 2rem 80px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         
-        .page-header h1 {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
+        .hero-content {
+            max-width: 800px;
         }
         
-        .page-header p {
-            color: #666;
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.3s both;
+            color: #F7E5C1;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.85;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .hero .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+        
+        .cta-button {
+            background: #C9A961;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
             font-size: 1.1rem;
         }
         
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background: #B8954A;
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            color: #F7E5C1;
+            border: 2px solid #F7E5C1;
+        }
+        
+        .cta-button.secondary:hover {
+            background: rgba(247, 229, 193, 0.1);
+        }
+        
+        /* Main Container */
         .container {
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 20px;
+            margin: 0 auto;
+            padding: 3rem 20px;
         }
         
-        .intro-section {
+        /* About Section */
+        .about-section {
             background: white;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 3rem 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-image {
             text-align: center;
         }
         
-        .intro-section p {
-            color: #555;
-            font-size: 1.1rem;
-            line-height: 1.8;
+        .about-image img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
         
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        .about-text-section {
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
         }
         
-        .project-card {
+        .about-text h2 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #C9A961;
+            padding-bottom: 0.5rem;
+        }
+        
+        .about-text p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .about-highlights {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 5px;
+            border-left: 4px solid #C9A961;
+        }
+        
+        .about-highlights h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .about-highlights ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .about-highlights li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #666;
+        }
+        
+        .about-highlights li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #C9A961;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Portfolio Sections */
+        .portfolio-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .section-card {
             background: white;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
         }
         
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        .section-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
         
-        .project-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .section-card .card-header {
+            height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 5rem;
+            background: linear-gradient(135deg, #C9A961 0%, #8B7355 100%);
         }
         
-        .project-image.art {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .section-card.work .card-header {
+            background: linear-gradient(135deg, #5a5a5a 0%, #3a3a3a 100%);
         }
         
-        .project-image.music {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        .section-card.engineering .card-header {
+            background: linear-gradient(135deg, #8B7355 0%, #6B5D4F 100%);
         }
         
-        .project-image.tech {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        .section-card.personal .card-header {
+            background: linear-gradient(135deg, #F7E5C1 0%, #C9A961 100%);
         }
         
-        .project-image.design {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        .section-card .card-body {
+            padding: 2rem;
         }
         
-        .project-content {
-            padding: 1.5rem;
-        }
-        
-        .project-content h3 {
+        .section-card h3 {
             color: #2c3e50;
-            margin-bottom: 0.8rem;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
         }
         
-        .project-content p {
+        .section-card p {
             color: #666;
             line-height: 1.6;
+            margin-bottom: 1rem;
         }
         
-        .project-badge {
-            display: inline-block;
-            background: #ecf0f1;
-            color: #2c3e50;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            margin-top: 0.8rem;
+        .section-card .card-footer {
+            color: #C9A961;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
-        .hobby-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+        .section-card .card-footer:after {
+            content: "→";
+            font-size: 1.2rem;
+            transition: transform 0.3s;
         }
         
-        .hobby-card {
+        .section-card:hover .card-footer:after {
+            transform: translateX(5px);
+        }
+        
+        /* Contact Section */
+        .contact-section {
             background: white;
-            padding: 1.5rem;
+            padding: 3rem 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border-left: 4px solid #3498db;
+            text-align: center;
         }
         
-        .hobby-card h4 {
+        .contact-section h2 {
             color: #2c3e50;
-            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #C9A961;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
             font-size: 1.1rem;
         }
         
-        .hobby-card p {
-            color: #666;
-            font-size: 0.95rem;
+        .contact-item .icon {
+            font-size: 1.5rem;
+            color: #C9A961;
         }
         
+        .contact-item a {
+            color: #C9A961;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .contact-item a:hover {
+            opacity: 0.7;
+            text-decoration: underline;
+        }
+        
+        /* Footer */
         footer {
             background: #2c3e50;
             color: white;
             text-align: center;
             padding: 2rem;
-            margin-top: 2rem;
+            margin-top: 0;
         }
         
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .projects-grid {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .about-content {
                 grid-template-columns: 1fr;
+            }
+            
+            .about-image img {
+                max-width: 250px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>
@@ -215,116 +421,106 @@
         </ul>
     </nav>
     
-    <div class="page-header">
-        <h1>Art & Personal Projects</h1>
-        <p>Creative pursuits and self-taught skills beyond engineering</p>
-    </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>ALEXANDER P. WILLINGHAM</h1>
+            <p class="tagline">Electrical Engineering Student | Project Manager | Creative Technologist</p>
+            <p class="subtitle">Bridging the gap between technical expertise and creative innovation through engineering, project management, and artistic exploration</p>
+            <div class="cta-buttons">
+                <a href="work-experience.html" class="cta-button">View My Experience</a>
+                <a href="engineering.html" class="cta-button secondary">Engineering Projects</a>
+            </div>
+        </div>
+    </section>
     
     <div class="container">
-        <div class="intro-section">
-            <p>Beyond my engineering work, I'm passionate about exploring creative and technical hobbies. I believe in continuous learning and the intersection of art, technology, and craftsmanship. Here are some of my personal pursuits and projects.</p>
-        </div>
-        
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-image art">🎨</div>
-                <div class="project-content">
-                    <h3>Oil Painting</h3>
-                    <p>Self-taught oil painter exploring traditional techniques and contemporary subjects. I enjoy the tactile nature of oil paints and the process of building layers to create depth and texture in my work.</p>
-                    <span class="project-badge">Self-Taught</span>
+        <div class="about-section">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/Headshot.jpg" alt="Alexander P. Willingham Professional Headshot">
                 </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-image music">🎹</div>
-                <div class="project-content">
-                    <h3>Classical Piano</h3>
-                    <p>Passionate classical pianist with years of self-directed study. I enjoy interpreting classical compositions and exploring the technical and emotional depth of piano literature.</p>
-                    <span class="project-badge">Self-Taught</span>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-image tech">🖨️</div>
-                <div class="project-content">
-                    <h3>Hobbyist 3D Printing</h3>
-                    <p>Enthusiast in additive manufacturing technology. I design and print functional parts, prototypes, and creative projects. Currently exploring metallization techniques for antenna applications in my research.</p>
-                    <span class="project-badge">Technical Hobby</span>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-image tech">🔧</div>
-                <div class="project-content">
-                    <h3>Computer & Electronics Repair</h3>
-                    <p>Self-taught repair technician for computers and electronic devices. I enjoy troubleshooting hardware issues, performing component-level repairs, and breathing new life into old technology.</p>
-                    <span class="project-badge">Self-Taught</span>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-image design">🎭</div>
-                <div class="project-content">
-                    <h3>Costume Design</h3>
-                    <p>Creative costume designer combining artistic vision with practical construction. I enjoy the challenge of bringing characters to life through fabric, texture, and attention to detail.</p>
-                    <span class="project-badge">Creative</span>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-image art">🎮</div>
-                <div class="project-content">
-                    <h3>Oddrubberband Studios</h3>
-                    <p>My digital coaching business focusing on Esports and technical consulting. Combining my love for gaming with my technical skills to help others improve and solve complex problems.</p>
-                    <span class="project-badge">Business Venture</span>
+                <div class="about-text-section">
+                    <div class="about-text">
+                        <h2>About Me</h2>
+                        <p>I'm a motivated Electrical Engineering student at Texas A&M University with a unique blend of technical expertise and creative thinking. My experience spans project management, circuit design, RF engineering, and even artistic pursuits like oil painting and classical piano.</p>
+                        <p>Through internships at Shawmut Design and Construction, I've gained hands-on experience managing large-scale construction projects, coordinating teams, and implementing innovative solutions. I'm passionate about applying engineering principles to solve real-world problems while maintaining a creative perspective.</p>
+                    </div>
+                    <div class="about-highlights">
+                        <h3>What I Bring</h3>
+                        <ul>
+                            <li>Strong technical foundation in Electrical Engineering</li>
+                            <li>Proven project management experience</li>
+                            <li>Research in RF/Microwave antenna systems</li>
+                            <li>Programming skills: Python, C++, Verilog</li>
+                            <li>Hardware design: Altium, CAD, SPICE</li>
+                            <li>Creative problem-solving approach</li>
+                            <li>Self-taught in multiple technical and artistic skills</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <div style="background: white; padding: 2rem; margin-top: 2rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-            <h2 style="color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 0.5rem; margin-bottom: 1.5rem;">Additional Interests</h2>
+        <h2 style="text-align: center; color: #2c3e50; font-size: 2.2rem; margin-bottom: 2rem;">Explore My Portfolio</h2>
+        
+        <div class="portfolio-sections">
+            <a href="work-experience.html" class="section-card work">
+                <div class="card-header">💼</div>
+                <div class="card-body">
+                    <h3>Work Experience</h3>
+                    <p>Two summer internships as a Project Management Intern at Shawmut Design and Construction, plus entrepreneurial ventures and customer service roles.</p>
+                    <div class="card-footer">
+                        <span>View Experience</span>
+                    </div>
+                </div>
+            </a>
             
-            <div class="hobby-grid">
-                <div class="hobby-card">
-                    <h4>🎨 Visual Arts</h4>
-                    <p>Exploring various mediums including oil painting, digital art, and design work</p>
+            <a href="engineering.html" class="section-card engineering">
+                <div class="card-header">⚡</div>
+                <div class="card-body">
+                    <h3>Engineering Projects</h3>
+                    <p>Research on metalizing 3D printed horn antennas, robotics communication systems, and coursework in RF/microwave engineering and circuit design.</p>
+                    <div class="card-footer">
+                        <span>View Projects</span>
+                    </div>
                 </div>
-                
-                <div class="hobby-card">
-                    <h4>🎵 Music Performance</h4>
-                    <p>Classical piano and previous experience in marching band</p>
+            </a>
+            
+            <a href="personal-projects.html" class="section-card personal">
+                <div class="card-header">🎨</div>
+                <div class="card-body">
+                    <h3>Art & Personal Projects</h3>
+                    <p>Self-taught oil painter, classical pianist, 3D printing enthusiast, computer repair technician, and costume designer with diverse creative interests.</p>
+                    <div class="card-footer">
+                        <span>View Projects</span>
+                    </div>
                 </div>
-                
-                <div class="hobby-card">
-                    <h4>🔬 Maker Culture</h4>
-                    <p>3D printing, electronics repair, and hands-on prototyping</p>
-                </div>
-                
-                <div class="hobby-card">
-                    <h4>🎮 Gaming & Esports</h4>
-                    <p>Competitive gaming and digital coaching through my business</p>
-                </div>
-                
-                <div class="hobby-card">
-                    <h4>🎭 Creative Design</h4>
-                    <p>Costume design combining artistic vision with technical execution</p>
-                </div>
-                
-                <div class="hobby-card">
-                    <h4>⚡ DIY Technology</h4>
-                    <p>Building and repairing computers and electronic devices</p>
-                </div>
-            </div>
+            </a>
         </div>
         
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; margin-top: 2rem; border-radius: 8px; text-align: center;">
-            <h3 style="margin-bottom: 1rem;">Philosophy</h3>
-            <p style="font-size: 1.1rem; line-height: 1.8;">I believe that the intersection of technical expertise and creative thinking leads to the most innovative solutions. My diverse interests in art, music, technology, and design complement my engineering education and provide unique perspectives on problem-solving.</p>
+        <div class="contact-section">
+            <h2>Let's Connect</h2>
+            <p style="color: #666; font-size: 1.1rem; margin-bottom: 1rem;">Interested in collaboration, internship opportunities, or just want to chat about engineering and creative projects?</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="icon">📧</span>
+                    <a href="mailto:alex.p.willingham@gmail.com">alex.p.willingham@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📱</span>
+                    <span>(512) 634-7928</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">🎓</span>
+                    <span>Texas A&M University</span>
+                </div>
+            </div>
         </div>
     </div>
     
     <footer>
         <p>&copy; 2024 Alexander P. Willingham | Electrical Engineering Portfolio</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Built with passion for engineering and creativity</p>
     </footer>
 </body>
 </html>
